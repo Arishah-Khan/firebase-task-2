@@ -1,0 +1,114 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e5d9c9;
+    height: 100vh;
+
+}
+
+/* Profile container */
+.profile-container {
+
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #e5d9c9;
+    text-align: left;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.setHeight{
+    background-color: #44311F;
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* Title */
+#userName {
+    font-size: 24px;
+    color: #f8f5f1;
+    margin-bottom: 15px;
+}
+
+/* User Details */
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Action Buttons */
+.setBtn {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Buttons styling */
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #d2bda1;
+    color: #271e13;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #b28e5f;
+    border: 2px solid white;
+    color: #19140c;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .profile-container {
+        padding: 15px;
+    }
+
+    #userName {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .profile-container {
+        padding: 10px;
+    }
+
+    #userName {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px;
+    }
+}

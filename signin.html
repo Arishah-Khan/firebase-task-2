@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="materialContainers">
+        <div class="signinBg">
+            <div class="box login-box">
+                <div class="title">SIGN IN</div>
+                <div class="header">
+                    <button class="btn" id="signUpBtn"><a href="index.html">Sign Up</a></button>
+                    <button class="activebtn" id="signInBtn"><a href="signin.html">Sign In</a></button>
+                </div>
+                <div class="input">
+                    <label for="email">Email:<i class="fas fa-envelope setIcon"></i></label>
+                    <input type="email" name="email" id="loginemail">
+                    <span class="spin"></span>
+                </div>
+
+                <div class="input">
+                    <label for="regpass">Password:<i class="fas fa-lock setIcon"></i></label>
+                    <input type="password" name="regpass" id="loginpass" required>
+                    <span class="spin"></span>
+                </div>
+
+                <div class="button">
+                    <button type="button" id="loginBtn" class="activebtn">SIGN IN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="signin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="materialContainer">
+        <div class="box register-box">
+            <div class="title">SIGN UP</div>
+
+            <div class="header">
+                <button class="activebtn" id="signUpBtn"><a href="index.html">Sign Up</a></button>
+                <button class="btn" id="signInBtn"><a href="signin.html">Sign In</a></button>
+            </div>
+
+            <div class="input">
+                <label for="fullName"><i class="fas fa-user"></i></label>
+                <input type="text" id="fullName" required placeholder="Full Name">
+                <span class="spin"></span>
+            </div>
+            
+            <div class="input">
+                <label for="email"><i class="fas fa-envelope"></i></label>
+                <input type="email" name="email" id="email" placeholder="Email">
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="dob"></label>
+                <input type="date" name="dob" id="dob" required>
+            </div>
+
+            <div class="input">
+                <label for="regpass"><i class="fas fa-lock"></i></label>
+                <input type="password" name="regpass" id="password" required placeholder="Enter your password">
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="input">
+                <label for="bio">Bio:</label>
+                <textarea id="bio" rows="4" cols="30" placeholder="Write a brief introduction about yourself" required></textarea>
+            </div>
+
+            <div class="button">
+                <button type="button" id="signupBtn" class="activebtn">SIGN UP</button>
+            </div>
+
+            <div class="button">
+                <button type="button" class="activebtn google-btn" id="googleBtn">
+                    <img src="image/download.jpeg" alt="Google logo">
+                    Continue with Google
+                </button>
+            </div>
+            
+            <div class="login-link">
+                <p>Already have an account? <a href="signin.html" class="anchor">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+    <h1 class="snap">
+        Post Sphere
+    </h1>
+    <p class="para">Quickly share your thoughts, and easily edit or delete them anytime!</p>
+    <h2 class="users">Our Users</h2>
+
+    <div>
+        <div id="userList">
+           
+            <h2 id="userName"></h2>
+            <button id="viewProfileBtn" style="display:none;">View Profile</button>
+        </div>
+        <div class="postSection" style="display: none;">
+            <input class="postTitle" type="text" placeholder="Enter post title..." /> <!-- Add Title Input -->
+            <textarea class="postDescription" placeholder="Write your post description..."></textarea> <!-- Add Description Input -->
+            <button class="submitPostBtn">Submit Post</button>
+        </div>
+      
+        <!-- User Profile Section -->
+        <div id="userProfileDiv" style="display:none;">
+            <h3>Full Profile</h3>
+            <p><strong>Full Name:</strong> <span id="profileFullName"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="profileDob"></span></p>
+            <p><strong>Gender:</strong> <span id="profileGender"></span></p>
+            <p><strong>Bio:</strong> <span id="profileBio"></span></p>
+            <button id="editProfileBtn">Edit Profile</button>
+        </div>
+    </div>
+
+    <!-- Global Posts Container -->
+    <div id="globalPostsContainer" style="margin-top: 30px; margin-bottom: 30px;">
+        <h3>User Posts</h3>
+    </div>
+
+
+    <script type="module" src="profile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

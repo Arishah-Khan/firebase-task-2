@@ -1,0 +1,334 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5d9c9;
+}
+
+
+.materialContainer {
+    position: relative;
+    width: 550px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2;
+    background-color: #ccb494;
+    border-radius: 10px
+}
+
+.materialContainers {
+    width: 550px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.signinBg{
+    background-color: #ccb494;
+    position: relative;
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2;
+    border-radius: 10px;
+
+}
+
+
+.box {
+    position: relative;
+    width: 100%;
+    padding: 40px 20px;
+    background-color: #44311F;
+    border-radius: 10px;
+    z-index: 5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.boxes {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 40px 20px;
+    background-color: red;
+    border-radius: 10px;
+    z-index: 5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Title styling */
+.title {
+    font-size: 34px;
+    font-weight: bold;
+    color: #e5d9c9;
+    /* White title text */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Input container styling */
+.input {
+    position: relative;
+    margin-bottom: 20px;
+
+}
+
+.input label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #f8f5f1;
+}
+
+.input input,
+.input select,
+.input textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #fffefe;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #e5d9c9;
+    color: black;
+    font-weight: bold;
+}
+
+.input input::placeholder,
+.input select::placeholder,
+.input textarea::placeholder {
+    color: black;
+    font-weight: bold;
+}
+.input select{
+    color: black;
+    font-weight: bold;
+}
+.input input[type="date"] {
+color: black;
+font-weight: bold;
+}
+
+/* Input fields focus effect */
+.input input:focus,
+.input select:focus,
+.input textarea:focus {
+    border-color: #b28e5f;
+}
+
+.input .spin {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background: #b28e5f;
+    transition: width 0.4s;
+}
+
+/* Apply spin effect when input fields are focused */
+.input input:focus+.spin,
+.input select:focus+.spin,
+.input textarea:focus+.spin {
+    width: 100%;
+}
+
+.input label i {
+    position: absolute;
+    right: 10px;
+    /* Position icon inside the input field */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: black;
+}
+
+
+
+.setIcon {
+    margin-top: 10px;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d2bda1;
+    /* Golden button background */
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #b28e5f;
+    /* Darker shade on hover */
+    border: 2px solid white;
+    transform: scale(1.05);
+    /* Slight scale effect on hover */
+}
+
+/* Active button styling */
+.activebtn {
+    background-color: #9e7b4c;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.activebtn:hover {
+    background-color: #b28e5f;
+    /* Darker shade on hover */
+    border: 2px solid white;
+
+}
+
+/* Google login button styling */
+.google-btn {
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.google-btn img {
+    height: 25px;
+    margin-right: 10px;
+}
+
+#gender {
+    background: #e5d9c9;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    .materialContainer {
+        padding: 10px 20px;
+        margin: 0;
+        width: 450px;
+    }
+
+    .box {
+        padding: 40px 20px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .input input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .button button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+.login-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+@media (max-width: 400px) {
+    .materialContainer {
+        padding: 5px 15px;
+        width: 300px;
+    }
+
+    .box {
+        padding: 30px 10px;
+        margin: 20px 0px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .input input {
+        font-size: 12px;
+    }
+
+    .button button {
+        font-size: 12px;
+    }
+    .login-link {
+       font-size: 14px;
+    }
+}
+
+
+
+.activebtn a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.activebtn a:hover {
+    color: white;
+}
+
+.btn a {
+    color: #44311F;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn a:hover {
+    color: white;
+}
+
+.anchor {
+    color: #e5d9c9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.anchor:hover {
+    color: #f8f5f1;
+    text-decoration: underline;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}

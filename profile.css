@@ -1,0 +1,277 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e5d9c9;
+}
+
+
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    .materialContainer {
+        padding: 10px 20px;
+        margin: 0;
+        width: 450px;
+    }
+
+    .box {
+        padding: 40px 20px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .input input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .button button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+    .materialContainer {
+        padding: 5px 15px;
+        width: 300px;
+    }
+
+    .box {
+        padding: 30px 10px;
+        margin: 20px 0px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .input input {
+        font-size: 12px;
+    }
+
+    .button button {
+        font-size: 12px;
+    }
+
+   
+}
+
+
+
+
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.profile {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #4e3d26;
+    color: #e5d9c9;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #b28e5f;
+    border: 2px solid white;
+    color: #19140c;
+    transform: scale(1.05);
+}
+
+.snap {
+    color: #271e13;
+    text-align: center;
+    padding: 40px 0px 20px;
+    font-size: 38px;
+}
+
+.para {
+    color: #271e13;
+    text-align: center;
+    font-size: 16px;
+}
+
+.users {
+    padding: 20px 0px 0px 20px;
+
+}
+
+.posts-heading {
+    color: #271e13;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.userNames {
+    color: #e5d9c9;
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 0px 10px;
+    font-weight: 200;
+}
+
+.editPostBtn,.deletePostBtn {
+    padding: 8px;
+    background-color: #d2bda1;
+    color: #271e13;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+@media (max-width:481px) {
+    .snap {
+        font-size: 30px;
+    }
+
+    .para {
+        font-size: 14px;
+    }
+    .editPostBtn,.deletePostBtn {
+        padding: 6px;
+       font-size: 12px;
+    }
+}
+
+/* Main post container */
+.global-post {
+    gap: 10px;
+    max-width: 700px;
+    background-color: #44311f;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Post hover effect */
+.global-post:hover {
+    transform: translateY(-5px);
+    /* Slightly lift the post on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    /* Increased shadow on hover */
+}
+
+
+.global-post h5 {
+    font-size: 20px;
+    color: #ebe2d6;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-weight: 200;
+}
+
+/* Post content styling */
+.global-post p {
+    font-size: 16px;
+    color: #f8f5f1;
+    margin-bottom: 10px;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.postBtn {
+    display: flex;
+    gap: 5px;
+    justify-content: end;
+}
+
+
+
+
+
+
+.postSection {
+    width: 100%; /* Adjust width of the form container */
+    max-width: 280px; /* Optional: Set a max-width to ensure it doesn't get too wide */
+    margin: 10px auto; /* Horizontally center the container */
+    padding: 10px; /* Padding inside the container */
+    background-color: #4e3d26; /* Optional background color */
+    border-radius: 10px; /* Rounded corners for the container */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for the container */
+  }
+  
+  /* Style for Post Title Input */
+  .postTitle {
+    width: 100%; /* Use 100% of the container's width */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9em;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  .postTitle:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  /* Style for Post Description Textarea */
+  .postDescription {
+    width: 100%; /* Use 100% of the container's width */
+    padding: 8px;
+    height: 70px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9em;
+    background-color: #f9f9f9;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  
+ 
+  
+  /* Style for Submit Post Button */
+  .submitPostBtn {
+    padding: 8px;
+    background-color: #d2bda1;
+    color: #271e13;
+    border-radius: 4px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+  }
+  .submit{
+    text-align: center;
+  }
+  
+ 
+  
