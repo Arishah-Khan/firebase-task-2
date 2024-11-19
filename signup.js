@@ -1,9 +1,11 @@
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, collection, addDoc, serverTimestamp, db} from "./firebase.js";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, collection, addDoc, serverTimestamp, db } from "./firebase.js";
 
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-// DOM Elements
+const cloudName = "dukmizgzg";
+const unSignedUploadPreSet = "esqdfaa1";
+
 const fullName = document.getElementById("fullName");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -11,7 +13,8 @@ const dob = document.getElementById("dob");
 const gender = document.getElementById("gender");
 const bio = document.getElementById("bio");
 const signupBtn = document.getElementById("signupBtn");
-const googleBtn = document.getElementById("googleBtn"); // Ensure this exists in the HTML
+const googleBtn = document.getElementById("googleBtn");
+const profilePic = document.getElementById("fileUpload");
 
 signupBtn.addEventListener("click", async () => {
   console.log("Button clicked");
@@ -25,7 +28,6 @@ signupBtn.addEventListener("click", async () => {
 
   console.log(userFullName, userEmail, userPassword, userDob)
 
-  // Validate required fields
   if (userEmail === "" || userPassword === "" || userFullName === "") {
     Swal.fire({
       title: "Warning!",
@@ -37,27 +39,60 @@ signupBtn.addEventListener("click", async () => {
   }
 
   try {
-    // Create user with email and password
     const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPassword);
     const user = userCredential.user;
 
     console.log("User created:", user);
     
+    const file = profilePic.files[0];  
+    if (file) {
 
-    // Save user details to Firestore
-    await addDoc(collection(db, "users"), {
-      uid: user.uid,
-      fullName: userFullName,
-      email: userEmail,
-      dob: userDob,
-      gender: userGender,
-      bio: userBio,
-      createdAt: serverTimestamp(),
-    });
+      const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', unSignedUploadPreSet);  
+      formData.append('cloud_name', cloudName); 
 
-    Swal.fire("Success!", "Account created successfully", "success").then(() => {
-      location.href = "signin.html"; // Redirect to sign-in page
-    });
+      const uploadResponse = await fetch(url, {
+        method: 'POST',
+        body: formData
+      });
+
+      const uploadData = await uploadResponse.json();
+      const imageUrl = uploadData.secure_url;  
+
+      console.log("Image uploaded to Cloudinary:", imageUrl);
+
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        fullName: userFullName,
+        email: userEmail,
+        dob: userDob,
+        gender: userGender,
+        bio: userBio,
+        imageUrl: imageUrl,  
+        createdAt: serverTimestamp(),
+      });
+
+      Swal.fire("Success!", "Account created successfully", "success").then(() => {
+        location.href = "signin.html";
+      });
+
+    } else {
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        fullName: userFullName,
+        email: userEmail,
+        dob: userDob,
+        gender: userGender,
+        bio: userBio,
+        createdAt: serverTimestamp(),
+      });
+
+      Swal.fire("Success!", "Account created successfully", "success").then(() => {
+        location.href = "signin.html"; 
+      });
+    }
 
   } catch (error) {
     console.error("Error during sign-up:", error);
@@ -84,7 +119,6 @@ signupBtn.addEventListener("click", async () => {
   }
 });
 
-// Google Sign-In
 googleBtn.addEventListener("click", () => {
   console.log("Google sign-in button clicked");
 
@@ -92,7 +126,6 @@ googleBtn.addEventListener("click", () => {
     .then((result) => {
       console.log("Google Sign-In successful:", result.user);
 
-      // Handle Google Sign-In success
       Swal.fire({
         icon: "success",
         title: "Sign-In Successful",
@@ -100,7 +133,7 @@ googleBtn.addEventListener("click", () => {
         timer: 2000,
         showConfirmButton: false
       }).then(() => {
-        window.location.href = "profile.html"; // Redirect to profile page
+        window.location.href = "profile.html"; 
       });
     })
     .catch((error) => {
@@ -128,7 +161,6 @@ googleBtn.addEventListener("click", () => {
           break;
       }
 
-      // Show error message
       Swal.fire({
         icon: "error",
         title: "Sign-In Failed",

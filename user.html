@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" href="user.css">
 </head>
+
 <body>
-    <!-- Background Image -->
     <div class="bgImg"></div>
 
-    <!-- Profile Section -->
     <main>
         <div id="profileContainer" class="profile-container">
             <div class="setHeight">
-            <!-- Welcome Message -->
-            <h1 id="userName">Personal Information</h1>
+                <div>
+                    <img id="userImage" src="" alt="User Profile Image" class="profile-image" width="150px" height="150px">
+                </div>
+                <h1 id="userName">Personal Information</h1>
 
-            <!-- User Details -->
-            <p><strong>Full Name:</strong> <span id="fullName"></span></p>
-            <p><strong>Email:</strong> <span id="email"></span></p>
-            <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
-            <p><strong>Gender:</strong> <span id="gender"></span></p>
-            <p><strong>Bio:</strong> <span id="bio"></span></p>
+                <p><strong>Full Name:</strong> <span id="fullName"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+                <p><strong>Gender:</strong> <span id="gender"></span></p>
+                <p><strong>Bio:</strong> <span id="bio"></span></p>
 
-            <!-- Email Verification -->
 
-            <!-- Action Buttons -->
-            <div class="setBtn">
-               <button id="deleteAccountBtn">Delete Account</button>
-                <button id="logoutBtn">Logout</button>
+                <div class="setBtn">
+                    <button id="deleteAccountBtn">Delete Account</button>
+                    <button id="logoutBtn">Logout</button>
+                </div>
             </div>
-        </div>
         </div>
     </main>
 
-    <!-- External Scripts -->
-    
-    <script type="module" src="user.js"></script>
-    <!-- <script type="module" src="signup.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script type="module" src="user.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>

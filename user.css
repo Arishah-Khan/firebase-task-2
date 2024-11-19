@@ -1,11 +1,9 @@
-/* General reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #e5d9c9;
@@ -13,7 +11,10 @@ body {
 
 }
 
-/* Profile container */
+.profile-image{
+    border-radius: 50%;
+}
+
 .profile-container {
 
     border-radius: 8px;
@@ -28,25 +29,27 @@ body {
 }
 .setHeight{
     background-color: #44311F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 90%;
     max-width: 700px;
     margin: 0 auto;
     padding: 20px;
 }
-/* Title */
+
 #userName {
     font-size: 24px;
     color: #f8f5f1;
     margin-bottom: 15px;
 }
 
-/* User Details */
 p {
     font-size: 16px;
     margin: 10px 0;
 }
 
-/* Action Buttons */
 .setBtn {
     margin-top: 20px;
     display: flex;
@@ -54,7 +57,6 @@ p {
     justify-content: center;
 }
 
-/* Buttons styling */
 button {
     padding: 10px;
     border: none;
@@ -74,7 +76,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
     .profile-container {
         padding: 15px;

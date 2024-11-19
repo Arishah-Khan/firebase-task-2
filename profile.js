@@ -1,27 +1,22 @@
 import { collection, addDoc, onSnapshot, db, deleteDoc, doc, updateDoc } from "./firebase.js";
 
-// DOM elements
 const userListDiv = document.getElementById("userList");
-const globalPostsContainer = document.getElementById("globalPostsContainer"); // Global container for all posts
+const globalPostsContainer = document.getElementById("globalPostsContainer");
 
-// Listen for real-time updates to users
 onSnapshot(collection(db, "users"), (querySnapshot) => {
   userListDiv.innerHTML = ""; // Clear previous data
 
-  // Create a flex container to hold all users
   const usersContainer = document.createElement("div");
   usersContainer.style.display = "flex";
   usersContainer.style.justifyContent = "center";
   usersContainer.style.alignItems = "center";
-  usersContainer.style.flexWrap = "wrap"; // Wrap users to new rows if needed
-  usersContainer.style.gap = "10px"; // Add spacing between items
-  usersContainer.style.padding = "10px"; // Optional padding
+  usersContainer.style.flexWrap = "wrap"; 
+  usersContainer.style.gap = "10px"; 
+  usersContainer.style.padding = "10px"; 
 
-  // Iterate through each user
   querySnapshot.forEach((userDoc) => {
     const userData = userDoc.data();
 
-    // Create a new div for each user
     const userDiv = document.createElement("div");
     userDiv.classList.add("user-item");
     userDiv.style.margin = "10px";
@@ -31,9 +26,9 @@ onSnapshot(collection(db, "users"), (querySnapshot) => {
     userDiv.style.flexDirection = "column";
     userDiv.style.alignItems = "center";
 
-    // Display basic user information and Add Post button
+    const profileImageUrl = userData.imageUrl
     userDiv.innerHTML = `
-      <img src="image/user.png" alt="Profile Image" class="profile-img" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px;">
+      <img src="${profileImageUrl}" alt="Profile Image" class="profile-img" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
       <h3 class="userName">${userData.fullName}</h3>
       <div class="profile">
         <button class="viewProfileBtn">View Profile</button>
@@ -63,28 +58,24 @@ onSnapshot(collection(db, "users"), (querySnapshot) => {
       </div>
     `;
 
-    // Append the user div to the user container
     usersContainer.appendChild(userDiv);
 
-    // Handle "Add Post" button click to show the post input section
     const addPostBtn = userDiv.querySelector(".addPostBtn");
     const postSection = userDiv.querySelector(".postSection");
 
     addPostBtn.addEventListener("click", () => {
-      postSection.style.display = "block"; // Show the post input section
+      postSection.style.display = "block"; 
     });
 
-    // Handle "View Profile" button click to show the full profile
     const viewProfileBtn = userDiv.querySelector(".viewProfileBtn");
     const profileSection = userDiv.querySelector(".profileSection");
 
     viewProfileBtn.addEventListener("click", () => {
-      const userId = userDoc.id; // Firebase user ID
-      const userDataString = encodeURIComponent(JSON.stringify(userData)); // User data encode karein
+      const userId = userDoc.id; 
+      const userDataString = encodeURIComponent(JSON.stringify(userData)); 
       window.location.href = `user.html?userId=${userId}&data=${userDataString}`;
     });
 
-    // Handle submitting a post globally
     const submitPostBtn = userDiv.querySelector(".submitPostBtn");
 
     submitPostBtn.addEventListener("click", async () => {
@@ -93,7 +84,6 @@ onSnapshot(collection(db, "users"), (querySnapshot) => {
 
       if (postTitle && postDescription) {
         try {
-          // Add the post to the global posts collection
           await addDoc(collection(db, "posts"), {
             title: postTitle,
             content: postDescription,
@@ -102,14 +92,10 @@ onSnapshot(collection(db, "users"), (querySnapshot) => {
             userName: userData.fullName,
           });
 
-          // Clear the post fields
           userDiv.querySelector(".postTitle").value = "";
-          userDiv.querySelector(".postDescription").value = ""; // Clear post description field
+          userDiv.querySelector(".postDescription").value = "";
 
-          // Hide the post input field after submission
-          postSection.style.display = "none"; // Hide post input field
-
-          // Show SweetAlert success
+          postSection.style.display = "none"; 
           Swal.fire({
             icon: 'success',
             title: 'Post added successfully!',
@@ -125,18 +111,16 @@ onSnapshot(collection(db, "users"), (querySnapshot) => {
 
   });
 
-  // Append the users container to the main list div
   userListDiv.appendChild(usersContainer);
   userListDiv.appendChild(globalPostsContainer);
 });
 
 onSnapshot(collection(db, "posts"), (querySnapshot) => {
-  globalPostsContainer.innerHTML = ""; // Clear previous posts
+  globalPostsContainer.innerHTML = ""; 
 
   querySnapshot.forEach((postDoc) => {
     const postData = postDoc.data();
 
-    // Check if heading is already appended, to avoid duplication
     if (!document.querySelector('.posts-heading')) {
       const postsHeading = document.createElement('h3');
       postsHeading.textContent = "User Posts";
@@ -144,7 +128,6 @@ onSnapshot(collection(db, "posts"), (querySnapshot) => {
       globalPostsContainer.appendChild(postsHeading);
     }
 
-    // Create a post div
     const globalPostDiv = document.createElement("div");
     globalPostDiv.classList.add("global-post");
     globalPostDiv.style.padding = "10px";
@@ -167,13 +150,11 @@ onSnapshot(collection(db, "posts"), (querySnapshot) => {
     const editPostBtn = globalPostDiv.querySelector(".editPostBtn");
     const deletePostBtn = globalPostDiv.querySelector(".deletePostBtn");
 
-    // Edit Post Button
     editPostBtn.addEventListener("click", async () => {
-      // Using SweetAlert for title and description edit
       const { value: title } = await Swal.fire({
         title: 'Edit Post Title',
         input: 'text',
-        inputValue: postData.title, // pre-fill with the current title
+        inputValue: postData.title, 
         showCancelButton: true,
         inputValidator: (value) => {
           if (!value) {
@@ -186,7 +167,7 @@ onSnapshot(collection(db, "posts"), (querySnapshot) => {
         const { value: content } = await Swal.fire({
           title: 'Edit Post Content',
           input: 'textarea',
-          inputValue: postData.content, // pre-fill with the current content
+          inputValue: postData.content, 
           showCancelButton: true,
           inputValidator: (value) => {
             if (!value) {
@@ -196,14 +177,12 @@ onSnapshot(collection(db, "posts"), (querySnapshot) => {
         });
 
         if (content) {
-          // Update the post with new title and content
           try {
             await updateDoc(doc(db, "posts", postDoc.id), {
               title: title,
               content: content
             });
 
-            // SweetAlert for success
             Swal.fire({
               icon: 'success',
               title: 'Post updated successfully!',
@@ -217,7 +196,6 @@ onSnapshot(collection(db, "posts"), (querySnapshot) => {
       }
     });
 
-    // Delete Post Button
     deletePostBtn.addEventListener("click", async () => {
       Swal.fire({
         title: 'Are you sure?',
@@ -231,7 +209,6 @@ onSnapshot(collection(db, "posts"), (querySnapshot) => {
         if (result.isConfirmed) {
           try {
             await deleteDoc(doc(db, "posts", postDoc.id));
-            // SweetAlert for success
             Swal.fire({
               icon: 'success',
               title: 'Post deleted successfully!',
